@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Byte2ByteLearn</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .sidebar {
+            min-height: 100vh;
+            background: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 0;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background: #495057;
+            color: white;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        .main-content {
+            padding: 30px;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, #198754, #20c997);
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #198754;
+        }
+        .stats-card i {
+            font-size: 2rem;
+            color: #198754;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar">
+                <div class="text-center mb-4">
+                    <h4>Byte2ByteLearn</h4>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-book"></i> Courses
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-tasks"></i> Practice
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-chart-line"></i> Progress
+                        </a>
+                    </li>
+                    <li class="nav-item mt-auto">
+                        <a href="../index.html" class="nav-link">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 main-content">
+                <div class="welcome-card">
+                    <h2>Welcome back, <span id="userFullName">User</span>!</h2>
+                    <p class="mb-0">Here's what's happening with your learning today.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stats-card">
+                            <i class="fas fa-book-open"></i>
+                            <h5>Active Courses</h5>
+                            <h3 id="activeCourses">3</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stats-card">
+                            <i class="fas fa-check-circle"></i>
+                            <h5>Completed Lessons</h5>
+                            <h3 id="completedLessons">12</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stats-card">
+                            <i class="fas fa-trophy"></i>
+                            <h5>Achievements</h5>
+                            <h3 id="achievements">5</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Recent Activity</h5>
+                            </div>
+                            <div class="list-group list-group-flush" id="recentActivity">
+                                <!-- Activity items will be added here by JavaScript -->
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Completed "Data Structures" lesson</h6>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                    <p class="mb-1">You've completed the Arrays and Strings module.</p>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">New badge earned</h6>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+                                    <p class="mb-1">You've earned the "Quick Learner" badge!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Upcoming Deadlines</h5>
+                            </div>
+                            <div class="list-group list-group-flush" id="upcomingDeadlines">
+                                <!-- Deadline items will be added here by JavaScript -->
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Algorithms Quiz</h6>
+                                        <small class="text-muted">Due in 2 days</small>
+                                    </div>
+                                    <p class="mb-1">Complete the quiz on Sorting Algorithms</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    <script>-->
+<!--        document.getElementById('logoutBtn').addEventListener('click', async function(event) {-->
+<!--            event.preventDefault();-->
+
+<!--            try {-->
+<!--                const response = await fetch('/api/v1/users/logout', {-->
+<!--                    method: 'POST',-->
+<!--                    // Add headers as needed, e.g. Authorization token-->
+<!--                    // headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }-->
+<!--                });-->
+
+<!--                if (response.ok) {-->
+<!--                    // Clear user-related data if any-->
+<!--                    localStorage.removeItem('userData');-->
+<!--                    localStorage.removeItem('token');-->
+
+<!--                    // Redirect to your index.html served by Spring Boot-->
+<!--                    window.location.href = '/index.html';-->
+<!--                } else {-->
+<!--                    alert('Logout failed. Please try again.');-->
+<!--                }-->
+<!--            } catch (error) {-->
+<!--                console.error('Error during logout:', error);-->
+<!--                alert('An error occurred during logout.');-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
+
+</body>
+</html>

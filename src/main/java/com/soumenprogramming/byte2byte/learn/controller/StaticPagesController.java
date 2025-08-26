@@ -22,4 +22,14 @@ public class StaticPagesController {
         // TODO: Add logic to handle form submission (e.g., send email, save to database)
         return "redirect:/contact?success";
     }
+    
+    @GetMapping("/courses")
+    public String courses() {
+        return "forward:/courses.html";
+    }
+
+    @GetMapping("/course/java-basics")
+    public String javaBasics() {
+        return "redirect:https://medium.com/@mail2soumen007/java-programming-basics-1e4845feddb6";
+    }
 }

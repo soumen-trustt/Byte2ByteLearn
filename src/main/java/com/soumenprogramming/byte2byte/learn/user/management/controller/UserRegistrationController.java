@@ -2,6 +2,7 @@ package com.soumenprogramming.byte2byte.learn.user.management.controller;
 
 import com.soumenprogramming.byte2byte.learn.user.management.dao.UserDaoService;
 import com.soumenprogramming.byte2byte.learn.user.management.entity.UserRegistration;
+import com.soumenprogramming.byte2byte.learn.service.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class UserRegistrationController {
 
     @Autowired
     private UserDaoService userDaoService;
+
+    @Autowired
+    private EmailService emailService;
 
     private static final Logger LOG = LoggerFactory.getLogger(UserRegistrationController.class);
 
@@ -61,6 +65,15 @@ public class UserRegistrationController {
             user.setCreatedAt(new java.util.Date());
             user.setUpdatedAt(new java.util.Date());
             UserRegistration savedUser = userDaoService.save(user);
+            
+            // Send registration success email
+            try {
+                emailService.sendRegistrationSuccessEmail(savedUser.getEmail(), savedUser.getUsername(), savedUser.getFullname(),savedUser.getPassword());
+                LOG.info("Registration email sent successfully to user: {}", savedUser.getUsername());
+            } catch (Exception emailException) {
+                LOG.warn("Failed to send registration email to user: {} - {}", savedUser.getUsername(), emailException.getMessage());
+                // Continue with registration even if email fails
+            }
             
             return ResponseEntity
                     .status(HttpStatus.CREATED)

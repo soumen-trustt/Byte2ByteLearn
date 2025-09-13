@@ -34,7 +34,6 @@ public class EmailService {
             
         } catch (Exception e) {
             LOG.error("Failed to send registration email to {}: {}", toEmail, e.getMessage());
-            // Don't throw exception to avoid breaking registration flow
         }
     }
 
